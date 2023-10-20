@@ -1,0 +1,42 @@
+<div class="container">
+<h2 class="tittle mt-3">Contrato</h2>
+<!-- <pre>{{ data | json }}</pre> -->
+<form action="" class="col-12 form-control">
+    <div class="row" *ngIf="data!=undefined">
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="diasTotal" class="form-label">Total días: </label>
+                <input type="text" value={{data.diasTotal}} class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="diasTotal">Días transcurridos: </label>
+                <input type="text" value={{data.diasTranscurridos}} class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="diasTotal">Días Restantes: </label>
+                <input type="text" value={{data.diasRestantes}} class="form-control" disabled>
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="diasTotal">Ejecutado %: </label>
+                <input type="text" value={{data.totalEjecutado}} class="form-control" disabled>
+                
+            </div>
+            <div class="mb-3">
+                <label for="diasTotal">Restante %: </label>
+                <input type="text" value={{data.totalRestante}} class="form-control" disabled>
+            </div>
+        </div>
+        <div class="col-6">
+                <canvas width="400" height="150" baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"> </canvas>
+                <hr>
+                <canvas width="500" height="300" baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="'pie'"> </canvas>
+        </div>
+    </div>
+    <div class="row p-3" *ngIf="data==undefined">
+        <div class="alert alert-dark" role="alert">
+            {{mensaje}}
+        </div>
+    </div>
+</form>
+</div>
